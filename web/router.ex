@@ -16,7 +16,9 @@ defmodule Pop.Router do
   scope "/", Pop do
     pipe_through :browser # Use the default browser stack
 
-    get "/signin", PageController, :signin
+    get "/", PageController, :hello
+    get "/signin", PageController, :index
+    post "/signin", PageController, :signin
   end
 
   # Other scopes may use custom stacks.

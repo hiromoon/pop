@@ -19,6 +19,8 @@ defmodule Pop.Router do
     get "/", PageController, :hello
     get "/signin", PageController, :index
     post "/signin", PageController, :signin
+
+    resources "/users", UserController
   end
 
   # Other scopes may use custom stacks.

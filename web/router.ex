@@ -23,6 +23,14 @@ defmodule Pop.Router do
     resources "/users", UserController
   end
 
+  scope "/oauth", Pop do
+    pipe_through :api
+
+    scope "/v2" do
+      get "/.well-known/openid-configuration", DiscoveryController, :index
+    end
+  end
+
   # Other scopes may use custom stacks.
   # scope "/api", Pop do
   #   pipe_through :api

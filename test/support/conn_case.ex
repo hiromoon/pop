@@ -1,4 +1,4 @@
-defmodule Pop.ConnCase do
+defmodule PopWeb.ConnCase do
   @moduledoc """
   This module defines the test case to be used by
   tests that require setting up a connection.
@@ -25,10 +25,10 @@ defmodule Pop.ConnCase do
       import Ecto.Changeset
       import Ecto.Query
 
-      import Pop.Router.Helpers
+      import PopWeb.Router.Helpers
 
       # The default endpoint for testing
-      @endpoint Pop.Endpoint
+      @endpoint PopWeb.Endpoint
     end
   end
 

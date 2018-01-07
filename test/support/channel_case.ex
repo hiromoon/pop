@@ -1,4 +1,4 @@
-defmodule Pop.ChannelCase do
+defmodule PopWeb.ChannelCase do
   @moduledoc """
   This module defines the test case to be used by
   channel tests.
@@ -27,7 +27,7 @@ defmodule Pop.ChannelCase do
 
 
       # The default endpoint for testing
-      @endpoint Pop.Endpoint
+      @endpoint PopWeb.Endpoint
     end
   end
 

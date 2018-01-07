@@ -1,4 +1,4 @@
-defmodule Pop.Gettext do
+defmodule PopWeb.Gettext do
   @moduledoc """
   A module providing Internationalization with a gettext-based API.
 

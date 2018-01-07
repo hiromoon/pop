@@ -1,5 +1,5 @@
-defmodule Pop.Router do
-  use Pop.Web, :router
+defmodule PopWeb.Router do
+  use PopWeb, :router
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -13,26 +13,21 @@ defmodule Pop.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/", Pop do
-    pipe_through :browser # Use the default browser stack
+  scope "/", PopWeb do
+    pipe_through :browser
 
     get "/", PageController, :hello
     get "/signin", PageController, :index
     post "/signin", PageController, :signin
 
-    resources "/users", UserController
+    #resources "/users", UserController
   end
 
-  scope "/oauth", Pop do
+  scope "/oauth", PopWeb do
     pipe_through :api
 
     scope "/v2" do
       get "/.well-known/openid-configuration", DiscoveryController, :index
     end
   end
-
-  # Other scopes may use custom stacks.
-  # scope "/api", Pop do
-  #   pipe_through :api
-  # end
 end

@@ -1,7 +1,7 @@
-defmodule Pop.Endpoint do
+defmodule PopWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :pop
 
-  socket "/socket", Pop.UserSocket
+  socket "/socket", PopWeb.UserSocket
 
   # Serve at "/" the static files from "priv/static" directory.
   #
@@ -38,5 +38,5 @@ defmodule Pop.Endpoint do
     key: "_pop_key",
     signing_salt: "aDIPTq/z"
 
-  plug Pop.Router
+  plug PopWeb.Router
 end

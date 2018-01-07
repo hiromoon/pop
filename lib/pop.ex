@@ -11,7 +11,7 @@ defmodule Pop do
       # Start the Ecto repository
       supervisor(Pop.Repo, []),
       # Start the endpoint when the application starts
-      supervisor(Pop.Endpoint, []),
+      supervisor(PopWeb.Endpoint, []),
       # Start your own worker by calling: Pop.Worker.start_link(arg1, arg2, arg3)
       # worker(Pop.Worker, [arg1, arg2, arg3]),
     ]

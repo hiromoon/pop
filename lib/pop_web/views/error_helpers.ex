@@ -1,4 +1,4 @@
-defmodule Pop.ErrorHelpers do
+defmodule PopWeb.ErrorHelpers do
   @moduledoc """
   Conveniences for translating and building error messages.
   """
@@ -32,9 +32,9 @@ defmodule Pop.ErrorHelpers do
     #     dgettext "errors", "is invalid"
     #
     if count = opts[:count] do
-      Gettext.dngettext(Pop.Gettext, "errors", msg, msg, count, opts)
+      Gettext.dngettext(PopWeb.Gettext, "errors", msg, msg, count, opts)
     else
-      Gettext.dgettext(Pop.Gettext, "errors", msg, opts)
+      Gettext.dgettext(PopWeb.Gettext, "errors", msg, opts)
     end
   end
 end

@@ -1,4 +1,4 @@
-defmodule Pop.UserSocket do
+defmodule PopWeb.UserSocket do
   use Phoenix.Socket
 
   ## Channels

@@ -10,10 +10,10 @@ config :pop,
   ecto_repos: [Pop.Repo]
 
 # Configures the endpoint
-config :pop, Pop.Endpoint,
+config :pop, PopWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "qAv/ih2mSO5BT++APG/ixEd5VbTLIFS19vA+CZACGyH+L8stpTZgcaKMFtr+KM+C",
-  render_errors: [view: Pop.ErrorView, accepts: ~w(html json)],
+  render_errors: [view: PopWeb.ErrorView, accepts: ~w(html json)],
   pubsub: [name: Pop.PubSub,
            adapter: Phoenix.PubSub.PG2]
 

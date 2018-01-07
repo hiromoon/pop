@@ -1,5 +1,5 @@
-defmodule Pop.PageController do
-  use Pop.Web, :controller
+defmodule PopWeb.PageController do
+  use PopWeb, :controller
 
   def index(conn, _params) do
     render conn, "signin.html"

@@ -1,4 +1,4 @@
-defmodule Pop.Web do
+defmodule PopWeb do
   @moduledoc """
   A module that keeps using definitions for controllers,
   views and so on.
@@ -28,20 +28,21 @@ defmodule Pop.Web do
 
   def controller do
     quote do
-      use Phoenix.Controller
+      use Phoenix.Controller, namespace: PopWeb
 
       alias Pop.Repo
       import Ecto
       import Ecto.Query
 
-      import Pop.Router.Helpers
-      import Pop.Gettext
+      import PopWeb.Router.Helpers
+      import PopWeb.Gettext
     end
   end
 
   def view do
     quote do
-      use Phoenix.View, root: "web/templates"
+      use Phoenix.View, root: "lib/pop_web/templates",
+                        namespace: PopWeb
 
       # Import convenience functions from controllers
       import Phoenix.Controller, only: [get_csrf_token: 0, get_flash: 2, view_module: 1]
@@ -49,9 +50,9 @@ defmodule Pop.Web do
       # Use all HTML functionality (forms, tags, etc)
       use Phoenix.HTML
 
-      import Pop.Router.Helpers
-      import Pop.ErrorHelpers
-      import Pop.Gettext
+      import PopWeb.Router.Helpers
+      import PopWeb.ErrorHelpers
+      import PopWeb.Gettext
     end
   end
 
@@ -68,7 +69,7 @@ defmodule Pop.Web do
       alias Pop.Repo
       import Ecto
       import Ecto.Query
-      import Pop.Gettext
+      import PopWeb.Gettext
     end
   end
 

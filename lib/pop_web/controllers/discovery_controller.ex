@@ -1,5 +1,5 @@
-defmodule Pop.DiscoveryController do
-  use Pop.Web, :controller
+defmodule PopWeb.DiscoveryController do
+  use PopWeb, :controller
 
   def index(conn, _params) do
     json conn, %{

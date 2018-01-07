@@ -19,14 +19,22 @@ defmodule PopWeb.Router do
     get "/", PageController, :hello
     get "/signin", PageController, :index
     post "/signin", PageController, :signin
+    # get "consent"
+    # post "consent"
 
-    #resources "/users", UserController
+    resources "/users", UserController
   end
 
   scope "/oauth", PopWeb do
     pipe_through :api
 
     scope "/v2" do
+      # get "/authorization"
+      # post "/authorization"
+      # get "/token"
+      # get "/token/introspection"
+      # get "/userinfo"
+      # get "/jwks"
       get "/.well-known/openid-configuration", DiscoveryController, :index
     end
   end

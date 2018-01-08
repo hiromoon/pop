@@ -23,6 +23,20 @@ defmodule PopWeb.Router do
     # post "consent"
 
     resources "/users", UserController
+    resources "/sessions", SessionController, only: [:new, :create, :delete],
+                                              singleton: true
+  end
+
+  defp authenticate_user(conn, _) do
+    case get_session(conn, :user_id) do
+      nil ->
+        conn
+        |> Phoenix.Controller.put_flash(:error, "Login required")
+        |> Phoenix.Controller.redirect(to: "/")
+        |> halt()
+      user_id ->
+        assign(conn, :current_user, Pop.Accounts.get_user!(user_id))
+    end
   end
 
   scope "/oauth", PopWeb do

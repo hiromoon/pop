@@ -3,9 +3,7 @@ defmodule Pop.Repo.Migrations.CreateUsers do
 
   def change do
     create table(:users) do
-      add :user_id, :string
-      add :email, :string
-      add :password, :string
+      add :name, :string
 
       timestamps()
     end

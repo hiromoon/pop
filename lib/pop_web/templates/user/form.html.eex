@@ -6,21 +6,17 @@
   <% end %>
 
   <div class="form-group">
-    <%= label f, :user_id, class: "control-label" %>
-    <%= text_input f, :user_id, class: "form-control" %>
-    <%= error_tag f, :user_id %>
+    <%= label f, :name, class: "control-label" %>
+    <%= text_input f, :name, class: "form-control" %>
+    <%= error_tag f, :name %>
   </div>
 
   <div class="form-group">
-    <%= label f, :email, class: "control-label" %>
-    <%= text_input f, :email, class: "form-control" %>
-    <%= error_tag f, :email %>
-  </div>
-
-  <div class="form-group">
-    <%= label f, :password, class: "control-label" %>
-    <%= text_input f, :password, class: "form-control" %>
-    <%= error_tag f, :password %>
+    <%= inputs_for f, :credential, fn cf -> %>
+      <%= label cf, :email, class: "control-label" %>
+      <%= text_input cf, :email, class: "form-control" %>
+      <%= error_tag cf, :email %>
+    <% end %>
   </div>
 
   <div class="form-group">

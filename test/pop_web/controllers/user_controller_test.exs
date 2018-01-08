@@ -3,9 +3,9 @@ defmodule PopWeb.UserControllerTest do
 
   alias Pop.Accounts
 
-  @create_attrs %{email: "some email", password: "some password", user_id: "some user_id"}
-  @update_attrs %{email: "some updated email", password: "some updated password", user_id: "some updated user_id"}
-  @invalid_attrs %{email: nil, password: nil, user_id: nil}
+  @create_attrs %{name: "some name"}
+  @update_attrs %{name: "some updated name"}
+  @invalid_attrs %{name: nil}
 
   def fixture(:user) do
     {:ok, user} = Accounts.create_user(@create_attrs)
@@ -60,7 +60,7 @@ defmodule PopWeb.UserControllerTest do
       assert redirected_to(conn) == user_path(conn, :show, user)
 
       conn = get conn, user_path(conn, :show, user)
-      assert html_response(conn, 200) =~ "some updated email"
+      assert html_response(conn, 200) =~ "some updated name"
     end
 
     test "renders errors when data is invalid", %{conn: conn, user: user} do

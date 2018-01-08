@@ -1,13 +1,12 @@
 defmodule Pop.Accounts.User do
   use Ecto.Schema
   import Ecto.Changeset
-  alias Pop.Accounts.User
+  alias Pop.Accounts.{User, Credential}
 
 
   schema "users" do
-    field :email, :string
-    field :password, :string
-    field :user_id, :string
+    field :name, :string
+    has_one :credential, Credential
 
     timestamps()
   end
@@ -15,7 +14,7 @@ defmodule Pop.Accounts.User do
   @doc false
   def changeset(%User{} = user, attrs) do
     user
-    |> cast(attrs, [:user_id, :email, :password])
-    |> validate_required([:user_id, :email, :password])
+    |> cast(attrs, [:name])
+    |> validate_required([:name])
   end
 end

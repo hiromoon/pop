@@ -1,0 +1,30 @@
+<h2>Listing Clients</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Secret</th>
+      <th>Redirecturi</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for client <- @clients do %>
+    <tr>
+      <td><%= client.name %></td>
+      <td><%= client.secret %></td>
+      <td><%= client.redirectUri %></td>
+
+      <td class="text-right">
+        <span><%= link "Show", to: manage_client_path(@conn, :show, client), class: "btn btn-default btn-xs" %></span>
+        <span><%= link "Edit", to: manage_client_path(@conn, :edit, client), class: "btn btn-default btn-xs" %></span>
+        <span><%= link "Delete", to: manage_client_path(@conn, :delete, client), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Client", to: manage_client_path(@conn, :new) %></span>

@@ -39,6 +39,12 @@ defmodule PopWeb.Router do
     end
   end
 
+scope "/manage", PopWeb.Manage, as: :manage do
+  pipe_through :browser
+  resources "/clients", ClientController
+end
+
+
   scope "/oauth", PopWeb do
     pipe_through :api
 

@@ -17,5 +17,6 @@ defmodule Pop.Manage.Client do
     client
     |> cast(attrs, [:name, :secret, :redirectUri])
     |> validate_required([:name, :secret, :redirectUri])
+    |> validate_format(:redirectUri, ~r/https?:\/\/[a-zA-Z0-9\/.+=-]+/)
   end
 end

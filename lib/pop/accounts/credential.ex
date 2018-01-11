@@ -6,6 +6,7 @@ defmodule Pop.Accounts.Credential do
 
   schema "credentials" do
     field :email, :string
+    field :password, :string
     belongs_to :user, User
 
     timestamps()
@@ -17,5 +18,6 @@ defmodule Pop.Accounts.Credential do
     |> cast(attrs, [:email])
     |> validate_required([:email])
     |> unique_constraint(:email)
+    |> put_change(:password, Comeonin.Bcrypt.hashpwsalt(attrs["password"]))
   end
 end

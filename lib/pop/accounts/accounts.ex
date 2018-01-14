@@ -209,15 +209,17 @@ defmodule Pop.Accounts do
       from u in User,
         inner_join: c in assoc(u, :credential),
         where: c.email == ^email
-
-    case Repo.one(query) do
+    user = query
+           |> Repo.one()
+           |> Repo.preload(:credential)
+    case user do
       %User{} = user -> check_password(user, password)
       nil -> {:error, :unauthorized}
     end
   end
 
   defp check_password(user, password) do
-    case Comeonin.Bcrypt.checkpw(password, user.credentials.password) do
+    case Comeonin.Bcrypt.checkpw(password, user.credential.password) do
       true -> {:ok, user}
       false -> {:error, :unauthorized}
     end

@@ -38,7 +38,8 @@ defmodule Pop.Mixfile do
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:gettext, "~> 0.11"},
      {:cowboy, "~> 1.0"},
-     {:comeonin, "~> 3.2"}
+     {:comeonin, "~> 3.2"},
+     {:jose, "~> 1.8.4"}
    ]
   end
 

@@ -53,7 +53,7 @@ defmodule PopWeb.Router do
       # get "/token"
       # get "/token/introspection"
       # get "/userinfo"
-      # get "/jwks"
+      get "/jwks", JWKSController, :index
       get "/.well-known/openid-configuration", DiscoveryController, :index
     end
   end

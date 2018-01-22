@@ -19,6 +19,7 @@ defmodule PopWeb.Router do
     get "/", PageController, :hello
     get "/signin", PageController, :index
     post "/signin", PageController, :signin
+    get "/consent", ConsentController, :index
     # get "consent"
     # post "consent"
 
@@ -48,8 +49,9 @@ defmodule PopWeb.Router do
     pipe_through :api
 
     scope "/v2" do
-      # get "/authorization"
-      # post "/authorization"
+      get "/authorization", Authorizationcontroller, :index
+      post "/authorization", Authorizationcontroller, :index
+      post "/consent", ConsentController, :consent
       # get "/token"
       # get "/token/introspection"
       # get "/userinfo"

@@ -49,8 +49,8 @@ defmodule PopWeb.Router do
     pipe_through :api
 
     scope "/v2" do
-      get "/authorization", Authorizationcontroller, :index
-      post "/authorization", Authorizationcontroller, :index
+      get "/authorize", Authorizationcontroller, :index
+      post "/authorize", Authorizationcontroller, :index
       post "/consent", ConsentController, :consent
       # get "/token"
       # get "/token/introspection"

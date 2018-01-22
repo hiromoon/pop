@@ -5,8 +5,9 @@ defmodule PopWeb.Authorizationcontroller do
   def index(conn, params) do
     conn
     |> validation_required(params, ["scope", "response_type", "redirect_uri", "client_id"])
+    |> check_openid_scope(params)
     |> put_resp_cookie("_pop_auth", "hoge")
-    |> redirect to: "/signin"
+    |> redirect(to: "/signin")
   end
 
   defp validation_required(conn, params, list) do
@@ -20,5 +21,16 @@ defmodule PopWeb.Authorizationcontroller do
     list
     |> Enum.map(fn(x) -> Map.has_key?(params, x) end)
     |> Enum.all?(fn(x) -> x end)
+  end
+
+  defp check_openid_scope(conn, params) do
+    result = params["scope"]
+             |> String.split(" ")
+             |> Enum.member?("openid")
+
+    case result do
+      true -> conn
+      false -> raise "Invalid Request"
+    end
   end
 end

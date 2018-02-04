@@ -7,6 +7,7 @@ defmodule PopWeb.Authorizationcontroller do
     |> validation_required(params, ["scope", "response_type", "redirect_uri", "client_id"])
     |> check_openid_scope(params)
     |> check_redirect_uri_format(params)
+    |> check_response_type(params)
     |> put_resp_cookie("_pop_auth", "hoge")
     |> redirect(to: "/signin")
   end
@@ -38,6 +39,23 @@ defmodule PopWeb.Authorizationcontroller do
   defp check_redirect_uri_format(conn, params) do
     pattern = ~r/https?:\/\/[a-zA-Z0-9\/.+=-]+/
     result = Regex.match?(pattern, params["redirect_uri"])
+    case result do
+      true -> conn
+      false -> raise "Invalid Request"
+    end
+  end
+
+  defp check_response_type(conn, params) do
+    supported_types = [
+      "code",
+      "id_token",
+      "token",
+      "id_token token",
+      "code token",
+      "code id_token",
+      "code id_token token"
+    ]
+    result = Enum.any?(supported_types, fn(x) -> x == params["response_type"] end)
     case result do
       true -> conn
       false -> raise "Invalid Request"

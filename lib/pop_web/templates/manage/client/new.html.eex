@@ -1,5 +1,0 @@
-<h2>New Client</h2>
-
-<%= render "form.html", Map.put(assigns, :action, manage_client_path(@conn, :create)) %>
-
-<span><%= link "Back", to: manage_client_path(@conn, :index) %></span>

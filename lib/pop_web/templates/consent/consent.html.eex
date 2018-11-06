@@ -1,6 +1,0 @@
-<div class="jumbotron">
-  <h2>Consent</h2>
-  <form action="/oauth/v2/consent" method="post">
-    <button type="submit">submit</button>
-  </form>
-</div>

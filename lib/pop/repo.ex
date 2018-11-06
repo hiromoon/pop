@@ -1,3 +1,5 @@
 defmodule Pop.Repo do
-  use Ecto.Repo, otp_app: :pop
+  use Ecto.Repo,
+    otp_app: :pop,
+    adapter: Ecto.Adapters.MySQL
 end

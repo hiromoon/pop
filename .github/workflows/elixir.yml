@@ -30,7 +30,5 @@ jobs:
     - name: Prepare Database
       run: |
         sudo systemctl start mysql.service
-        mix ecto.create
-        mix ecto.migrate
     - name: Run tests
       run: mix test

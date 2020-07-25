@@ -3,7 +3,7 @@ use Mix.Config
 # Configure your database
 config :pop, Pop.Repo,
   username: "root",
-  password: "mysql",
+  password: "root",
   database: "pop_dev",
   hostname: "localhost",
   show_sensitive_data_on_connection_error: true,

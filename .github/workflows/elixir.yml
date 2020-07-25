@@ -35,6 +35,8 @@ jobs:
       run: mix deps.get
     - name: Prepare Database
       run: sudo systemctl start mysql.service
+    - name: Check code format
+      run: mix format --check-formatted
     - name: Run Lint
       run: mix credo
     - name: Run dialyzer

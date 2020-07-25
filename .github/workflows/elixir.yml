@@ -27,5 +27,10 @@ jobs:
         restore-keys: ${{ runner.os }}-mix-
     - name: Install dependencies
       run: mix deps.get
+    - name: Prepare Database
+      run: |
+        sudo systemctl start mysql.service
+        mix ecto.create
+        mix ecto.migrate
     - name: Run tests
       run: mix test
